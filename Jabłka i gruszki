@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int find_methods(int methods, int apples, vector<int> pears, int order)
+{
+
+    for(int i=0; i<pears.size(); i++)
+    {
+        int storage=0;
+
+        storage = apples + pears[i];
+
+        if (storage == order)
+        {
+            methods += 1;
+        }
+    }
+    return methods;
+}
+
+int main()
+{
+    int apples_bags_quantity, pears_bags_quantity, order_weigth, methods_quantity=0;
+    vector<int> apples_bags_weigth, pears_bags_weigth;
+
+    cin >> apples_bags_quantity >> pears_bags_quantity >> order_weigth;
+
+    for(int i=0; i<apples_bags_quantity; i++)
+    {
+        int bag_weigth;
+        cin >> bag_weigth;
+
+        apples_bags_weigth.push_back(bag_weigth);
+    }
+
+    for(int i=0; i<pears_bags_quantity; i++)
+    {
+        int bag_weigth;
+        cin >> bag_weigth;
+
+        pears_bags_weigth.push_back(bag_weigth);
+    }
+
+    for (int i=0; i<apples_bags_quantity; i++)
+    {
+
+        methods_quantity = find_methods(methods_quantity, apples_bags_weigth[i],
+                                                pears_bags_weigth, order_weigth);
+    }
+
+    cout << methods_quantity;
+
+    return 0;
+}
